@@ -52,7 +52,10 @@ extern "C" {
 
 using namespace android;
 
+
 namespace qcamera {
+
+using ::android::hardware::camera::common::V1_0::helper::CameraMetadata;
 
 #ifndef TRUE
 #define TRUE 1
