@@ -1325,6 +1325,7 @@ typedef struct {
 typedef struct {
     uint32_t scale;
     float diopter;
+    volatile char         nubia_reserved1[4];
 } cam_focus_pos_info_t ;
 
 typedef struct {
@@ -1386,6 +1387,7 @@ typedef struct {
     uint8_t isDepth;
     float focus_value;
     uint8_t spot_light_detected;
+    volatile char         nubia_reserved1[4];
 } cam_auto_focus_data_t;
 
 typedef struct {
@@ -1527,6 +1529,7 @@ typedef struct {
     int32_t est_snap_iso_value;
     uint32_t est_snap_luma;
     uint32_t est_snap_target;
+    volatile char nubia_reserved[36];
 } cam_3a_params_t;
 
 typedef struct {
@@ -1547,6 +1550,7 @@ typedef struct {
     int32_t cct_value;
     cam_awb_gain_t rgb_gains;
     cam_awb_ccm_update_t ccm_update;
+    volatile char nubia_reserved[4];
 } cam_awb_params_t;
 
 typedef struct {
@@ -2234,6 +2238,26 @@ typedef enum {
     CAM_INTF_META_SPOT_LIGHT_DETECT,
     /* HAL based HDR*/
     CAM_INTF_PARM_HAL_BRACKETING_HDR,
+    NUBIA_01,
+    NUBIA_02,
+    NUBIA_03,
+    NUBIA_04,
+    NUBIA_05,
+    NUBIA_06,
+    NUBIA_07,
+    NUBIA_08,
+    NUBIA_09,
+    NUBIA_10,
+    NUBIA_11,
+    NUBIA_12,
+    NUBIA_13,
+    NUBIA_14,
+    NUBIA_15,
+    NUBIA_16,
+    NUBIA_17,
+    NUBIA_18,
+    NUBIA_19,
+    NUBIA_20,
     CAM_INTF_PARM_MAX
 } cam_intf_parm_type_t;
 

@@ -1026,6 +1026,28 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_JPEG_SCALE_DIMENSION,         cam_dimension_t,             1);
     INCLUDE(CAM_INTF_META_FOCUS_DEPTH_INFO,             uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_HAL_BRACKETING_HDR,           cam_hdr_param_t,             1);
+    INCLUDE(NUBIA_01,                    uint8_t,                     4);
+    INCLUDE(NUBIA_02,                    uint8_t,                     4);
+    INCLUDE(NUBIA_03,                    uint8_t,                     4);
+    INCLUDE(NUBIA_04,                    uint8_t,                     4);
+    INCLUDE(NUBIA_05,                    uint8_t,                     24);
+    INCLUDE(NUBIA_06,                    uint8_t,                     60);
+    INCLUDE(NUBIA_07,                    uint8_t,                     4);
+    INCLUDE(NUBIA_08,                    uint8_t,                     1);
+    volatile char nubia_reserved1[3];
+    INCLUDE(NUBIA_09,                    uint8_t,                     4);
+    INCLUDE(NUBIA_11,                    uint8_t,                     4);
+    INCLUDE(NUBIA_12,                    uint8_t,                     4);
+    INCLUDE(NUBIA_13,                    uint8_t,                     4);
+    INCLUDE(NUBIA_14,                    uint8_t,                     1);
+    INCLUDE(NUBIA_15,                    uint8_t,                     1);
+    INCLUDE(NUBIA_16,                    uint8_t,                     1);
+    INCLUDE(NUBIA_17,                    uint8_t,                     1);
+    INCLUDE(NUBIA_18,                    uint8_t,                     1);
+    volatile char nubia_reserved2[3];
+    INCLUDE(NUBIA_19,                    uint8_t,                     16);
+    INCLUDE(NUBIA_20,                    uint8_t,                     1);
+    INCLUDE(NUBIA_10,                    uint8_t,                     1);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to
