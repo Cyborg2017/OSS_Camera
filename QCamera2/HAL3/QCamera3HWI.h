@@ -31,11 +31,12 @@
 #define __QCAMERA3HARDWAREINTERFACE_H__
 
 // System dependencies
-#include <camera/CameraMetadata.h>
 #include <pthread.h>
 #include <utils/KeyedVector.h>
 #include <utils/List.h>
 #include <map>
+#include "CameraMetadata.h"
+
 // Camera dependencies
 #include "hardware/camera3.h"
 #include "QCamera3Channel.h"
