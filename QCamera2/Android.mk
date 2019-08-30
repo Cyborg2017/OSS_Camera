@@ -1,11 +1,3 @@
-# Enable SDLLVM compiler option for build flavour >= N flavour
-PLATFORM_SDK_NPDK = 24
-ENABLE_CAM_SDLLVM  := $(shell if [ $(PLATFORM_SDK_VERSION) -ge $(PLATFORM_SDK_NPDK) ] ; then echo true ; else echo false ; fi)
-ifeq ($(ENABLE_CAM_SDLLVM),true)
-SDCLANGSAVE := $(SDCLANG)
-SDCLANG := true
-endif
-
 ifneq (,$(filter $(TARGET_ARCH), arm arm64))
 
 LOCAL_PATH:= $(call my-dir)
@@ -36,7 +28,7 @@ LOCAL_SRC_FILES += \
         HAL3/QCamera3CropRegionMapper.cpp \
         HAL3/QCamera3StreamMem.cpp
 
-LOCAL_CFLAGS := -Wall -Wextra -Werror
+LOCAL_CFLAGS := -Wall -Wextra -Werror -Wno-unused-parameter -Wno-unused-variable
 
 #HAL 1.0 source
 
@@ -58,6 +50,8 @@ LOCAL_SRC_FILES += \
         HAL/QCameraParametersIntf.cpp \
         HAL/QCameraThermalAdapter.cpp
 endif
+
+LOCAL_CFLAGS += -Wno-c++14-extensions
 
 # System header file path prefix
 LOCAL_CFLAGS += -DSYSTEM_HEADER_PREFIX=sys
@@ -140,7 +134,3 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(call first-makefiles-under,$(LOCAL_PATH))
 endif
-ifeq ($(ENABLE_CAM_SDLLVM),true)
-SDCLANG := $(SDCLANGSAVE)
-endif
-
