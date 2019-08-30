@@ -623,6 +623,19 @@ typedef enum {
     CAM_ISO_MODE_800,
     CAM_ISO_MODE_1600,
     CAM_ISO_MODE_3200,
+    NUBIA_ISO_1,
+    NUBIA_ISO_2,
+    NUBIA_ISO_3,
+    NUBIA_ISO_4,
+    NUBIA_ISO_5,
+    NUBIA_ISO_6,
+    NUBIA_ISO_7,
+    NUBIA_ISO_8,
+    NUBIA_ISO_9,
+    NUBIA_ISO_10,
+    NUBIA_ISO_11,
+    NUBIA_ISO_12,   // fix: Torch Light first
+//    NUBIA_ISO_13,   // fix: Torch Light second
     CAM_ISO_MODE_MAX
 } cam_iso_mode_type;
 
@@ -673,6 +686,7 @@ typedef enum {
     CAM_FOCUS_MODE_CONTINOUS_VIDEO,
     CAM_FOCUS_MODE_CONTINOUS_PICTURE,
     CAM_FOCUS_MODE_MANUAL,
+    CAM_FOCUS_MODE_NUBIA,
     CAM_FOCUS_MODE_MAX
 } cam_focus_mode_type;
 
@@ -1325,7 +1339,6 @@ typedef struct {
 typedef struct {
     uint32_t scale;
     float diopter;
-    volatile char         nubia_reserved1[4];
 } cam_focus_pos_info_t ;
 
 typedef struct {
@@ -1387,7 +1400,6 @@ typedef struct {
     uint8_t isDepth;
     float focus_value;
     uint8_t spot_light_detected;
-    volatile char         nubia_reserved1[4];
 } cam_auto_focus_data_t;
 
 typedef struct {
@@ -1529,7 +1541,7 @@ typedef struct {
     int32_t est_snap_iso_value;
     uint32_t est_snap_luma;
     uint32_t est_snap_target;
-    volatile char nubia_reserved[36];
+    volatile char nubia_reserved[4];
 } cam_3a_params_t;
 
 typedef struct {
@@ -1550,7 +1562,6 @@ typedef struct {
     int32_t cct_value;
     cam_awb_gain_t rgb_gains;
     cam_awb_ccm_update_t ccm_update;
-    volatile char nubia_reserved[4];
 } cam_awb_params_t;
 
 typedef struct {
@@ -2212,34 +2223,34 @@ typedef enum {
     /* Touch exposure compensation (EV) status */
     CAM_INTF_META_TOUCH_AE_RESULT,
     /* Param for updating initial exposure index value*/
-    CAM_INTF_PARM_INITIAL_EXPOSURE_INDEX,
+    CAM_INTF_PARM_INITIAL_EXPOSURE_INDEX,  // stock 219, oss 219
     /* Gain applied post raw captrue.
        ISP digital gain */
     CAM_INTF_META_ISP_SENSITIVITY,
-    /* Param for enabling instant aec*/
-    CAM_INTF_PARM_INSTANT_AEC,
+    /* Param for enabling instant aec*/  //stock 220, oss 220
+    CAM_INTF_PARM_INSTANT_AEC,  //stock 221, oss 221
     /* Param for tracking previous reprocessing activity */
-    CAM_INTF_META_REPROCESS_FLAGS,
+    CAM_INTF_META_REPROCESS_FLAGS,  //stock 222, oss 222 QCamera3HardwareInterface::setReprocParameters
     /* Param of cropping information for JPEG encoder */
-    CAM_INTF_PARM_JPEG_ENCODE_CROP,
+    CAM_INTF_PARM_JPEG_ENCODE_CROP,  //stock 223, oss 223
     /* Param of scaling information for JPEG encoder */
     CAM_INTF_PARM_JPEG_SCALE_DIMENSION,
     /*Param for updating Quadra CFA mode */
     CAM_INTF_PARM_QUADRA_CFA,
     /* Meta Raw Dim */
-    CAM_INTF_META_RAW,
+    CAM_INTF_META_RAW,  // stock 226, oss 226 qcamera::QCameraParameters::getMetaRawInfo
     /* Number of streams and size of streams in
        current configuration for pic res*/
-    CAM_INTF_META_STREAM_INFO_FOR_PIC_RES,
-    CAM_INTF_META_FOCUS_DEPTH_INFO,
+    CAM_INTF_META_STREAM_INFO_FOR_PIC_RES,  // stock 227, oss 227 qcamera::QCameraParameters::sendStreamConfigForPickRes
+    CAM_INTF_META_FOCUS_DEPTH_INFO,   // stock 228, oss 228 qcamera::QCamera2HardwareInterface::metadata_stream_cb_routine
     /*Focus value output from af core*/
     CAM_INTF_META_FOCUS_VALUE,
     /*Spot light detection result output from af core*/
     CAM_INTF_META_SPOT_LIGHT_DETECT,
     /* HAL based HDR*/
-    CAM_INTF_PARM_HAL_BRACKETING_HDR,
-    NUBIA_01,
-    NUBIA_02,
+    CAM_INTF_PARM_HAL_BRACKETING_HDR,  // stock 231, oss 231 qcamera::QCamera3HardwareInterface::extractSceneMode
+    NUBIA_01,  // oss 232 qcamera::QCameraParameters::adjustExposureTime
+    NUBIA_02,  // oss 233 qcamera::QCameraParameters::setSlowShutterMode
     NUBIA_03,
     NUBIA_04,
     NUBIA_05,
